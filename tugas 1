@@ -1,0 +1,56 @@
+import java.util.Scanner;  
+
+class Mahasiswax {
+    String nama;
+    double nilai=0.0;
+
+    public Mahasiswax(String nama, double nilai){
+        this.nama = nama;
+        this.nilai = nilai;
+    }
+}
+
+public class Tugas {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Masukkan jumlah data: ");
+        int jumlah = sc.nextInt(); 
+
+        String[] nama = new String[jumlah];
+        int[] nilai = new int[jumlah];
+
+        for (int i = 0; i < jumlah; i++) {
+            System.out.println("Mahasiswa Ke: " + (i + 1));  
+            System.out.print("Nama: ");
+            nama[i] = sc.next();  
+            System.out.print("Nilai: ");
+            nilai[i] = sc.nextInt();  
+        }
+
+        int totalNilai = 0;
+
+        System.out.println("\nDAFTAR NILAI MAHASISWA");
+        System.out.println("No\tNama\tNilai\tStatus");
+
+        for (int i = 0; i < jumlah; i++) {
+            totalNilai += nilai[i]; 
+            String status;
+
+            if (nilai[i] >= 60) {
+                status = "Lulus";  
+            } else {
+                status = "Tidak Lulus";  
+            }
+
+            System.out.println((i + 1) + "\t" + nama[i] + "\t" + nilai[i] + "\t" + status);
+        }
+
+        double rataRata = (double) totalNilai / jumlah;  
+        System.out.println("\nJumlah: " + totalNilai);  
+        System.out.println("Nilai Rata-rata: " + rataRata);  
+
+        sc.close();
+    }
+}
